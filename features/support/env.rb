@@ -11,12 +11,14 @@ def caps
             appPackage: "com.cerveceriamodelo.modelonow",
             appActivity: "com.cerveceriamodelo.modelonow.MainActivity",
             newCommandTimeout: "3600",
-            automationName: "UiAutomator2"
+            automationName: "UiAutomator2",
+            autoGrantPermissions: "true"
         }, appium_lib: {
-            wait: 5
+            wait: 15
         }
     }
+
 end
 
-Appium::Driver.new(caps, true)
+Appium::Driver.new(caps,true)
 Appium.promote_appium_methods Object
