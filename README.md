@@ -1,5 +1,10 @@
 ZE Delivery - Mobile(Android) Automation with Appium and Cucumber
 
+.Do not have the App previous installed
+.Use virtual device if possible on Android Studio.
+
+
+
         Installing Enviroment Mac OS
 
 1. Install Homebrew:

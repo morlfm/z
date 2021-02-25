@@ -1,4 +1,5 @@
 require'rspec'
+include RSpec::Matchers
 class Order < Appium::Driver
 
    def initialize
@@ -29,6 +30,7 @@ class Order < Appium::Driver
     find_element(xpath: @add_1).click
     find_element(accessibility_id: @add_to_checkout).click
     find_element(accessibility_id: @place_order).click
+    sleep(3)
    end
 
     #def swipe
@@ -52,7 +54,7 @@ class Order < Appium::Driver
 
     def message_validation
         result = find_element(id: 'android:id/content')
-        expect(result).to eq('Você não está no endereço cadastrado,deseja continuar?')
+        expect(result).to eq("Você não está no endereço cadastrado,deseja continuar?").text
     end
 
 end
