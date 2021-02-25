@@ -14,7 +14,7 @@ def caps
             automationName: "UiAutomator2",
             autoGrantPermissions: "true"
         }, appium_lib: {
-            wait: 15
+            wait: 5
         }
     }
 

@@ -14,5 +14,6 @@ end
    find_element(accessibility_id: @address_complement).send_keys '54'
    hide_keyboard
    find_element(accessibility_id: @continue_address).click
+   sleep(6)
   end
 end
