@@ -1,6 +1,9 @@
 require 'appium_lib'
+require 'airborne'
+require 'stub_helper'
 require 'pry'
 require 'rspec'
+
 
 def caps
     {
@@ -19,6 +22,26 @@ def caps
     }
 
 end
-
+include RSpec::Matchers
 Appium::Driver.new(caps,true)
 Appium.promote_appium_methods Object
+
+
+Airborne.configure do |config|
+  config.include StubHelper
+end
+
+ExpectationNotMetError = RSpec::Expectations::ExpectationNotMetError
+ExpectationError       = Airborne::ExpectationError
+InvalidJsonError       = Airborne::InvalidJsonError
+PathError              = Airborne::PathError
+
+
+desc "Run all tests"
+# RUN ALL
+RSpec::Core::RakeTask.new('all') do |t|
+  t.rspec_opts = ["--format documentation","--color"]
+  t.pattern = [
+      'api/*.rb'
+  ]
+end

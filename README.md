@@ -3,6 +3,8 @@ ZE Delivery - Mobile(Android) Automation with Appium and Cucumber
 .Do not have the App previous installed
 .Use virtual device if possible on Android Studio.
 
+rspec --pattern api/*_spec.rb
+
 
 
         Installing Enviroment Mac OS

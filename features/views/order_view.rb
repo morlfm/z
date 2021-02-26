@@ -1,5 +1,5 @@
 require'rspec'
-include RSpec::Matchers
+
 class Order < Appium::Driver
 
    def initialize
@@ -53,8 +53,8 @@ class Order < Appium::Driver
   	end
 
     def message_validation
-        result = find_element(id: 'android:id/content')
-        expect(result).to eq("Você não está no endereço cadastrado,deseja continuar?").text
+        result = find_element(xpath: '//android.view.ViewGroup[@content-desc="coupon-select"]/android.widget.TextView[2]').text
+        expect(result).to eq("Você não está no endereço cadastrado,deseja continuar?")
     end
 
 end
