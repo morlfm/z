@@ -1,7 +1,7 @@
 ZE Delivery - API automation with Ruby/Airborne and Mobile(Android) Automation with Appium and Cucumber
 
 
-Use virtual device if possible at Android Studio to not break automation with you already had it installed may crash the test
+Use virtual device if possible at Android Studio 
 If not please use a android device without the app installed
 
 Run automated API tests with report
