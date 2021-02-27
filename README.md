@@ -1,9 +1,12 @@
-ZE Delivery - Mobile(Android) Automation with Appium and Cucumber
+ZE Delivery - API automation with Ruby/Airborne and Mobile(Android) Automation with Appium and Cucumber
 
-.Do not have the App previous installed
-.Use virtual device if possible on Android Studio.
 
-rspec --pattern api/*_spec.rb
+Use virtual device if possible at Android Studio to not break automation with you already had it installed may crash the test
+If not please use a android device without the app installed
+
+Run automated API tests with report
+Go to project folder ./ze_delivery and run :
+  .rspec --pattern api/*_spec.rb --format html --out api.html
 
 
 
@@ -15,7 +18,7 @@ rspec --pattern api/*_spec.rb
 2. Install JDK for Mac:
    http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
-3. Instaling and setig rbenv:
+3. Instaling and seting rbenv:
    brew install rbenv
    echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
    rbenv install -l
@@ -63,9 +66,13 @@ gem install bundle
 a)Git clone: https://github.com/morlfm/ze_Delivery
 b)Go to the ???? folder on yout terminal and do :
     bundle
-c)Add a real device on your USB or open a emulator on AndroidStudio >AVD and create one virtual device
+c)Use virtual device if possible at Android Studio to not break automation with you already had it installed may crash the test , If not please use a android device without the app installed
 d)Open Appium server and start server
-e)On terminal to start test do  :
-    cucumber
-    or
+e)On terminal to start test with report do :
+
     cucumber -p report
+
+
+Run automated API tests with report
+  Go to project folder ./ze_delivery and run :
+      .rspec --pattern api/*_spec.rb --format html --out api.html

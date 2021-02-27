@@ -1,3 +1,5 @@
+require 'pry'
+
 Dado('que o usuário está logado e adiciona produtos na sacola')do
 @login= Login.new
 @login.verify_if_modal_appears?
