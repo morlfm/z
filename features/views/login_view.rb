@@ -32,5 +32,5 @@ class Login < Appium::Driver
 		if  is_visible
 		 find_element(xpath: intro).click
 	  end
-  end
+    end
 end
