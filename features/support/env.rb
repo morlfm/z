@@ -2,7 +2,7 @@ require 'appium_lib'
 require 'airborne'
 require 'pry'
 require 'rspec'
-
+require 'dotenv'
 
 def caps
     {
@@ -14,22 +14,19 @@ def caps
             appActivity: "com.cerveceriamodelo.modelonow.MainActivity",
             newCommandTimeout: "3600",
             automationName: "UiAutomator2",
-            autoGrantPermissions: "true"
+            autoGrantPermissions: "true",
         }, appium_lib: {
             wait: 5
         }
     }
 
 end
+#appium
 include RSpec::Matchers
 Appium::Driver.new(caps,true)
 Appium.promote_appium_methods Object
 
-
-#Airborne.configure do |config|
-  #config.include StubHelper
-#end
-
+#Airborne
 ExpectationNotMetError = RSpec::Expectations::ExpectationNotMetError
 ExpectationError       = Airborne::ExpectationError
 InvalidJsonError       = Airborne::InvalidJsonError

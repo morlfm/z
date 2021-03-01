@@ -2,7 +2,7 @@
 # coding: utf-8
 
 
-Funcionalidade: Confirmar Geo-Localização
+Funcionalidade:Confirmar Geo-Localização
 
 @Geo-Localização
 Cenário: Usuário não está na Geo-Localização registrada no "Receber agora em:"

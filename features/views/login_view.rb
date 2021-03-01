@@ -8,7 +8,7 @@ class Login < Appium::Driver
 	end
 
   def enter_login
-		wait {find_element(accessibility_id: @enter_account).click}
+		find_element(accessibility_id: @enter_account).click
 		find_element(accessibility_id: @email).send_keys 'moral@pokemail.net'
 		find_element(accessibility_id: @password).send_keys 'teste01234'
 		find_element(accessibility_id: @enter).click
@@ -16,8 +16,7 @@ class Login < Appium::Driver
 
 	def verify_if_modal_appears?
     is_visible= element_visible(@first_message)
-    sleep(4)
-    jump_intro(@first_message,is_visible)
+     wait {jump_intro(@first_message,is_visible)}
   end
 
 	def element_visible(id)
@@ -34,5 +33,4 @@ class Login < Appium::Driver
 			find_element(xpath: intro).click
 		end
 	end
-	
 end

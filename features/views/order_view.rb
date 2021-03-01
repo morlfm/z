@@ -3,7 +3,6 @@ require'rspec'
 class Order < Appium::Driver
 
    def initialize
-
     @products= 'see-products'
     @search= '//android.view.ViewGroup[@content-desc="open-search"]/android.view.ViewGroup/android.view.ViewGroup/android.widget.EditText'
     @search_input= '//android.widget.EditText[@content-desc="search-input"]'
@@ -16,10 +15,9 @@ class Order < Appium::Driver
     @payment_status= 'checkout-action-button'
     @payment_method= 'payment-method-CREDIT_CARD'
     @finalize_order= 'checkout-payment-action-button'
-
    end
-   def place_order
 
+   def place_order
     find_element(accessibility_id: @products).click
     banner= element_visible('modal-close')
     close_banner(banner)
@@ -33,10 +31,6 @@ class Order < Appium::Driver
     sleep(3)
    end
 
-    #def swipe
-    #  swipe(start_x: 75, start_y: 500, end_x: 75, end_y: 20, duration: 500)
-    #end
-
     def close_banner(banner)
       if banner
         find_element(accessibility_id: 'modal-close').click
@@ -45,7 +39,7 @@ class Order < Appium::Driver
 
     def element_visible(id)
   		begin
-  			find_element(accessibility_id: id).displayed?
+  			wait{find_element(accessibility_id: id).displayed?}
   			return true
   		rescue
   			return false
@@ -56,5 +50,4 @@ class Order < Appium::Driver
         result = find_element(xpath: '//android.view.ViewGroup[@content-desc="coupon-select"]/android.widget.TextView[2]').text
         expect(result).to eq("Você não está no endereço cadastrado,deseja continuar?")
     end
-
 end

@@ -1,6 +1,9 @@
 
 Dado('que o usuário está logado') do
   @login= Login.new
+  sleep(5)
+  @login.verify_if_modal_appears?
+  sleep(3)
   @login.verify_if_modal_appears?
   @login.enter_login
 end

@@ -1,5 +1,4 @@
 
-require'pry'
 class Remove_prod <Appium::Driver
 
   def initialize
@@ -11,5 +10,4 @@ class Remove_prod <Appium::Driver
       find_element(accessibility_id: @remove).click
       wait {find_element(accessibility_id: @confirm_removal)}.click
   end
-
 end
