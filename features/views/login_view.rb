@@ -31,6 +31,6 @@ class Login < Appium::Driver
 	def jump_intro(intro,is_visible)
 		if  is_visible
 		 find_element(xpath: intro).click
-	  end
-    end
+	     end
+      end
 end
