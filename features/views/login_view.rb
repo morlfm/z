@@ -4,10 +4,10 @@ class Login < Appium::Driver
 		@email= 'email'
 		@password = 'password'
 		@enter_account= 'already-have-an-account'
-    @first_message = '//android.view.ViewGroup[@content-desc="onboarding-secondary-action-button"]/android.widget.TextView'
+		@first_message = '//android.view.ViewGroup[@content-desc="onboarding-secondary-action-button"]/android.widget.TextView'
 	end
 
-  def enter_login
+	def enter_login
 		find_element(accessibility_id: @enter_account).click
 		find_element(accessibility_id: @email).send_keys 'moral@pokemail.net'
 		find_element(accessibility_id: @password).send_keys 'teste01234'
@@ -15,9 +15,9 @@ class Login < Appium::Driver
 	end
 
 	def verify_if_modal_appears?
-    is_visible= element_visible(@first_message)
-     wait {jump_intro(@first_message,is_visible)}
-  end
+		is_visible= element_visible(@first_message)
+		wait {jump_intro(@first_message,is_visible)}
+	end
 
 	def element_visible(id)
 		begin

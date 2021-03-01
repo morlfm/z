@@ -3,7 +3,6 @@ require 'dotenv'
 require 'pry'
 require_relative '../features/support/spec_helper.rb'
 
-
 describe 'cities weather' do
   it 'should validate main weather by id' do
     condition=['Rain','Snow','Extreme','Clear','Drizzle','Clouds','Thunderstorm','Mist','Smoke','Haze Dust','Fog','Sand Dust','Ash','Squall','Tornado']
