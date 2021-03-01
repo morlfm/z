@@ -77,6 +77,12 @@ cucumber -p report
 To see report with results go to the folder report and open file.html
 
 
+To create and use {API key}:
+
+```bash
+Please log in here https://home.openweathermap.org/users/sign_in  and create your {API key} and set a root file .api_key.env and add your key
+API_KEY=<TOKEN>
+```
 Run automated API tests with report
     Go to project folder ./ze_delivery and run :
 ```bash

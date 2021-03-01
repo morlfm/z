@@ -1,8 +1,6 @@
 require 'appium_lib'
 require 'airborne'
-require 'pry'
 require 'rspec'
-require 'dotenv'
 
 def caps
     {

@@ -21,16 +21,16 @@ class Login < Appium::Driver
 
 	def element_visible(id)
 		begin
-			wait {find_element(xpath: id).displayed?}
-			return true
+		 wait {find_element(xpath: id).displayed?}
+		return true
 		rescue
-			return false
+		return false
 		end
 	end
 
 	def jump_intro(intro,is_visible)
 		if  is_visible
-			find_element(xpath: intro).click
-		end
+		 find_element(xpath: intro).click
 	end
+ end
 end
