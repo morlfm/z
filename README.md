@@ -1,4 +1,4 @@
-## ZE Delivery - API automation with Ruby/Airborne and Mobile(Android) Automation with Appium and Cucumber
+### ZE Delivery - API automation with Ruby/Airborne and Mobile(Android) Automation with Appium and Cucumber
 
 If you are using a real device please make sure to have usb connected and usb debug enabled
 Virtual device can be created at Android Studio/ Tools / AVD manager
@@ -64,14 +64,14 @@ gem install bundle
 a)Git clone: https://github.com/morlfm/ze_Delivery
 b)Go to the project folder on your terminal and do :
 ```bash
-    bundle
+bundle
 ```
 
 d)Open Appium server and start server
 e)On terminal to start test with report do :
 
 ```bash
-    cucumber -p report
+cucumber -p report
 ```
 
 To see report with results go to the folder report and open file.html
@@ -80,7 +80,7 @@ To see report with results go to the folder report and open file.html
 Run automated API tests with report
     Go to project folder ./ze_delivery and run :
 ```bash
-      rspec --pattern api/*_spec.rb --format html --out api.html
+rspec --pattern api/*_spec.rb --format html --out api.html
 ```
 
 To see report with results nagivate to project root and open the 'file'.html
