@@ -1,4 +1,4 @@
-### ZE Delivery - API automation with Ruby/Airborne and Mobile(Android) Automation with Appium and Cucumber
+### Z - API automation with Ruby/Airborne and Mobile(Android) Automation with Appium and Cucumber
 
 If you are using a real device please make sure to have usb connected and usb debug enabled
 Virtual device can be created at Android Studio/ Tools / AVD manager
