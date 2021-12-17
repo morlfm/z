@@ -21,14 +21,12 @@ class Order < Appium::Driver
     find_element(accessibility_id: @products).click
     banner= element_visible('modal-close')
     close_banner(banner)
-    sleep(3)
     find_element(xpath: @search).click
     find_element(xpath: @search_input).send_keys 'Colorado'
     find_element(xpath: @tap_element).click
     find_element(xpath: @add_1).click
     find_element(accessibility_id: @add_to_checkout).click
     find_element(accessibility_id: @place_order).click
-    sleep(3)
    end
 
     def close_banner(banner)
