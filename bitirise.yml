@@ -56,7 +56,7 @@ workflows:
         - is_debug_mode: 'yes'
         is_always_run: false
     envs:
-    - GIT_REPOSITORY_URL: git@gitlab.com:balance-inc/qa-automation/app-automation.git
+    - GIT_REPOSITORY_URL: https://github.com/morlfm/z/
     - BITRISE_GIT_BRANCH: main
     - TEST_SOURCE_DIR: "/bitrise/src/testsource/"
     - BITRISE_TEST_RESULT_DIR: "/bitrise/src/testsource/Results/"
@@ -124,7 +124,7 @@ workflows:
         - is_debug_mode: 'yes'
         is_always_run: false
     envs:
-    - GIT_REPOSITORY_URL: git@gitlab.com:balance-inc/qa-automation/app-automation.git
+    - GIT_REPOSITORY_URL: https://github.com/morlfm/z/
     - BITRISE_GIT_BRANCH: main
     - TEST_SOURCE_DIR: "/bitrise/src/testsource/"
     - BITRISE_TEST_RESULT_DIR: "/bitrise/src/testsource/Results/"
