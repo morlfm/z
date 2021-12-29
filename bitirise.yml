@@ -42,7 +42,7 @@ workflows:
             #!/usr/bin/env bash
 
 
-            cd android-us-stg
+            
 
 
             cucumber
@@ -110,7 +110,7 @@ workflows:
             #_start-emulator
             gem instal cucumber
 
-            cd android-us-stg
+            
             cucumber
         title: Run Cucumber Tests
     - deploy-to-bitrise-io@2:
