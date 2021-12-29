@@ -1,0 +1,134 @@
+---
+format_version: '11'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: other
+trigger_map:
+- push_branch: "*"
+  workflow: Just Test
+- pull_request_source_branch: "*"
+  workflow: Just Test
+workflows:
+  Just Test:
+    steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@6: {}
+    - cache-pull@2: {}
+    - appium-server@0: {}
+    - avd-manager@1: {}
+    - wait-for-android-emulator@1: {}
+    - script@1:
+        title: Dependências
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+
+            apt install ruby-full make gcc g++ zlib1g-dev patch -y
+            gem install bundle
+            bundle install
+
+            ###########################
+    - cache-push@2: {}
+    - script@1:
+        title: Debug
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            Sleep  6000s
+        is_always_run: true
+    - script@1:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+
+
+            cd android-us-stg
+
+
+            cucumber
+    - deploy-to-bitrise-io@2:
+        inputs:
+        - deploy_path: appium.log
+    - slack@3:
+        inputs:
+        - webhook_url: "$BITRISE_SLACK"
+        - channel: channel:#bitrise-results
+        - is_debug_mode: 'yes'
+        is_always_run: false
+    envs:
+    - GIT_REPOSITORY_URL: git@gitlab.com:balance-inc/qa-automation/app-automation.git
+    - BITRISE_GIT_BRANCH: main
+    - TEST_SOURCE_DIR: "/bitrise/src/testsource/"
+    - BITRISE_TEST_RESULT_DIR: "/bitrise/src/testsource/Results/"
+    meta:
+      bitrise.io:
+        stack: osx-xcode-13.2.x
+        machine_type_id: elite
+  testing:
+    steps:
+    - script@1:
+        inputs:
+        - content: "#!/usr/bin/env bash\n# fail if any commands fails\nset -e\n# debug
+            log\nset -x\n\njenv global 1.8\nexport JAVA_HOME=\"$(jenv prefix)\"\nenvman
+            add --key JAVA_HOME --value \"$(jenv prefix)\"  "
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@6: {}
+    - cache-pull@2: {}
+    - avd-manager@1:
+        inputs:
+        - api_level: '30'
+    - wait-for-android-emulator@1: {}
+    - script@1:
+        title: Dependências
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+
+            apt install ruby-full
+            gem install bundle
+            bundle install
+            gem install cucumber
+            ###########################
+    - cache-push@2: {}
+    - script@1:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            npm install -g appium@1.21.0 --unsafe-perm=true --allow-root
+            appium --log-level error:debug --log appium.log &>/dev/null &
+        title: Start Appium Server
+    - script@1:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            #_start-emulator
+            gem instal cucumber
+
+            cd android-us-stg
+            cucumber
+        title: Run Cucumber Tests
+    - deploy-to-bitrise-io@2:
+        is_always_run: false
+        inputs:
+        - deploy_path: appium.log
+    - slack@3:
+        inputs:
+        - webhook_url: "$BITRISE_SLACK"
+        - channel: channel:#bitrise-results
+        - is_debug_mode: 'yes'
+        is_always_run: false
+    envs:
+    - GIT_REPOSITORY_URL: git@gitlab.com:balance-inc/qa-automation/app-automation.git
+    - BITRISE_GIT_BRANCH: main
+    - TEST_SOURCE_DIR: "/bitrise/src/testsource/"
+    - BITRISE_TEST_RESULT_DIR: "/bitrise/src/testsource/Results/"
+meta:
+  bitrise.io:
+    stack: osx-xcode-13.2.x
+    machine_type_id: g2.12core
