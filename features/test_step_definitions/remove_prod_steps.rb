@@ -1,9 +1,7 @@
 
 Dado('que o usuário está logado e adiciona produtos na sacola')do
   @login= Login.new
-  sleep(5)
   @login.verify_if_modal_appears?
-  sleep(3)
   @login.verify_if_modal_appears?
   @login.enter_login
   @address=Address.new
